@@ -1,9 +1,17 @@
 import { Entity } from "./entity";
 
 export let Background = ({ url, ...options }) => {
-  return Entity({
+  const bg = Entity({
     classes: ["background"],
-    style: `background-image: url(${url});`,
     ...options,
   });
+
+  bg.stylize({
+    width: "100%",
+    height: "100%",
+    zIndex: -1,
+    backgroundImage: `url(${url})`,
+  });
+
+  return bg;
 };

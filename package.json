@@ -1,7 +1,7 @@
 {
-  "name": "robo-rangers",
+  "name": "simple-tactics",
   "version": "1.0.0",
-  "description": "A Megaman Battle Networks clone written with Excalibur",
+  "description": "A simple tactics game built with JavaScript",
   "author": "Devin T. Currie",
   "license": "ISC",
   "type": "module",
@@ -22,12 +22,8 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "nanoid": "^3.1.25",
-    "postcss": "^8.3.6",
     "prettier": "^2.3.2",
     "rollup": "^2.56.3",
-    "rollup-plugin-postcss": "^4.0.1",
-    "rollup-plugin-scss": "3",
-    "sass": "^1.39.0",
     "serve": "^12.0.0"
   }
 }

@@ -1,21 +1,58 @@
+import { Actor } from "../../actors/actor";
+
 import { Entity } from "../../elements/entity";
 import { Background } from "../../elements/background";
-import { Grid } from "../grid";
+import { Grid } from "../grid/grid";
 
-import gridBackground from "../../../images/grid_bg.png";
+import { gameStateMachine } from "../../../game-state-machine";
+
+import { PlayerTurnBattleState } from "./player-turn-battle-state";
 
 export const InitializeBattleState = () => ({
-  onEnter: () => {
-    const bg = Background({ url: gridBackground });
-    const grids = Entity({ classes: ["grids"] });
-    const leftGrid = Grid({ classes: ["grid--left"], parent: grids });
-    const rightGrid = Grid({ classes: ["grid--right"], parent: grids });
+  onEnter: async () => {
+    const { default: url } = await import(
+      `../backgrounds/battleback${Math.floor(Math.random() * 10 + 1)}.png`
+    );
 
-    return {
-      bg,
-      grids,
-      leftGrid,
-      rightGrid,
-    };
+    console.log(url);
+
+    const bg = Background({
+      url,
+    });
+
+    bg.stylize({ backgroundSize: "cover" });
+
+    const { entity: grids } = Entity({ classes: ["grids"] });
+
+    grids.style.left = "2px";
+    grids.style.bottom = "24px";
+
+    const blueGrid = Grid("Blue", {
+      classes: ["grid--blue"],
+      parent: grids,
+    });
+
+    blueGrid.spaces.forEach((space) => space.setBlue());
+
+    const redGrid = Grid("Red", {
+      classes: ["grid--red"],
+      parent: grids,
+    });
+
+    redGrid.spaces.forEach((space) => space.setRed());
+    redGrid.stylize({ left: "400px" });
+
+    const actor = Actor({
+      label: "Test Actor",
+      sprite: "",
+      owner: "player",
+      parent: blueGrid.entity,
+    });
+
+    blueGrid.map[0][0].occupy(actor);
+
+    gameStateMachine.transition(
+      PlayerTurnBattleState({ bg, grids, blueGrid, redGrid })
+    );
   },
 });

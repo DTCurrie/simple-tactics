@@ -1,0 +1,38 @@
+$grid-opacity: 0.85;
+
+.grids {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 796px;
+  bottom: 20px;
+  left: 2px;
+}
+
+.grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 400px;
+
+  & &__space {
+    display: flex;
+    width: 76px;
+    height: 56px;
+    background-color: rgba(255, 255, 255, $grid-opacity);
+    margin: 2px auto;
+
+    &:hover {
+      background-color: rgba(252, 239, 56, $grid-opacity);
+    }
+  }
+
+  &--left &__space {
+    background-color: rgba(56, 180, 252, $grid-opacity);
+  }
+
+  &--right &__space {
+    background-color: rgba(252, 56, 56, $grid-opacity);
+  }
+}

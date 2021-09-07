@@ -1,0 +1,33 @@
+{
+  "name": "robo-rangers",
+  "version": "1.0.0",
+  "description": "A Megaman Battle Networks clone written with Excalibur",
+  "author": "Devin T. Currie",
+  "license": "ISC",
+  "type": "module",
+  "scripts": {
+    "start": "wds --config ./web-dev-server-config.js",
+    "build": "rollup -c"
+  },
+  "devDependencies": {
+    "@rollup/plugin-image": "^2.1.1",
+    "@rollup/plugin-node-resolve": "^13.0.4",
+    "@rollup/plugin-replace": "^3.0.0",
+    "@web/dev-server": "^0.1.22",
+    "@web/dev-server-hmr": "^0.1.9",
+    "@web/dev-server-rollup": "^0.3.9",
+    "@web/rollup-plugin-html": "^1.10.0",
+    "crypto-js": "^4.1.1",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "nanoid": "^3.1.25",
+    "postcss": "^8.3.6",
+    "prettier": "^2.3.2",
+    "rollup": "^2.56.3",
+    "rollup-plugin-postcss": "^4.0.1",
+    "rollup-plugin-scss": "3",
+    "sass": "^1.39.0",
+    "serve": "^12.0.0"
+  }
+}

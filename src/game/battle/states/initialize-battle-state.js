@@ -1,58 +1,58 @@
-import { Actor } from "../../actors/actor";
-
 import { Entity } from "../../elements/entity";
 import { Background } from "../../elements/background";
 import { Grid } from "../grid/grid";
 
 import { gameStateMachine } from "../../../game-state-machine";
 
-import { PlayerTurnBattleState } from "./player-turn-battle-state";
+import { PlayerSelectBattleState } from "./player-select-battle-state";
+
+import { Knight } from "../../actors/knight/knight";
+import { Archer } from "../../actors/archer/archer";
 
 export const InitializeBattleState = () => ({
-  onEnter: async () => {
-    const { default: url } = await import(
-      `../backgrounds/battleback${Math.floor(Math.random() * 10 + 1)}.png`
-    );
-
-    console.log(url);
-
+  onEnter: () => {
     const bg = Background({
-      url,
+      url: `images/sprites/backgrounds/battleback${Math.floor(
+        Math.random() * 10 + 1
+      )}.png`,
     });
 
     bg.stylize({ backgroundSize: "cover" });
 
-    const { entity: grids } = Entity({ classes: ["grids"] });
-
-    grids.style.left = "2px";
-    grids.style.bottom = "24px";
+    const grids = Entity({ classes: ["grids"] });
 
     const blueGrid = Grid("Blue", {
       classes: ["grid--blue"],
-      parent: grids,
+      parent: grids.entity,
     });
-
-    blueGrid.spaces.forEach((space) => space.setBlue());
 
     const redGrid = Grid("Red", {
       classes: ["grid--red"],
-      parent: grids,
+      parent: grids.entity,
     });
 
-    redGrid.spaces.forEach((space) => space.setRed());
     redGrid.stylize({ left: "400px" });
 
-    const actor = Actor({
-      label: "Test Actor",
-      sprite: "",
+    const knight = Knight({
+      label: "Knight",
       owner: "player",
       parent: blueGrid.entity,
     });
 
-    blueGrid.map[0][0].occupy(actor);
+    blueGrid.map["4-2"].occupy(knight);
+    knight.idle();
+
+    const archer = Archer({
+      label: "Archer",
+      owner: "player",
+      parent: blueGrid.entity,
+    });
+
+    blueGrid.map["3-0"].occupy(archer);
+    archer.idle();
 
     gameStateMachine.transition(
-      PlayerTurnBattleState({ bg, grids, blueGrid, redGrid })
+      PlayerSelectBattleState({ bg, grids, blueGrid, redGrid })
     );
   },
 });

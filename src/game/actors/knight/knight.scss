@@ -1,0 +1,100 @@
+.actor.knight {
+  width: 76px;
+  height: 76px;
+
+  &--idle {
+    .actor__sprite {
+      background-image: url(/images/sprites/knight/knight--idle.png);
+
+      &.tile-0 {
+        width: 24px;
+        height: 30px;
+        background-position: -1px -1px;
+      }
+
+      &.tile-1 {
+        width: 24px;
+        height: 30px;
+        background-position: -27px -1px;
+      }
+
+      &.tile-2 {
+        width: 24px;
+        height: 30px;
+        background-position: -53px -1px;
+      }
+
+      &.tile-3 {
+        width: 24px;
+        height: 30px;
+        background-position: -79px -1px;
+      }
+
+      &.tile-4 {
+        width: 24px;
+        height: 30px;
+        background-position: -105px -1px;
+      }
+
+      &.tile-5 {
+        width: 24px;
+        height: 30px;
+        background-position: -131px -1px;
+      }
+
+      &.tile-6 {
+        width: 25px;
+        height: 29px;
+        background-position: -157px -1px;
+      }
+
+      &.tile-7 {
+        width: 26px;
+        height: 28px;
+        background-position: -184px -1px;
+      }
+
+      &.tile-8 {
+        width: 25px;
+        height: 27px;
+        background-position: -212px -1px;
+      }
+
+      &.tile-9 {
+        width: 24px;
+        height: 27px;
+        background-position: -239px -1px;
+      }
+
+      &.tile-10 {
+        width: 22px;
+        height: 28px;
+        background-position: -265px -1px;
+      }
+
+      &.tile-11 {
+        width: 22px;
+        height: 29px;
+        background-position: -289px -1px;
+      }
+
+      &.tile-12 {
+        width: 23px;
+        height: 30px;
+        background-position: -313px -1px;
+      }
+
+      &.tile-13 {
+        width: 24px;
+        height: 30px;
+        background-position: -338px -1px;
+      }
+
+      &.tile-14 {
+        width: 24px;
+        height: 30px;
+        background-position: -364px -1px;
+      }
+    }
+  }
+}

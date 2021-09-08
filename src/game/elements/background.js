@@ -1,6 +1,6 @@
 import { Entity } from "./entity";
 
-export let Background = ({ url, ...options }) => {
+export const Background = ({ url, ...options }) => {
   const bg = Entity({
     classes: ["background"],
     ...options,

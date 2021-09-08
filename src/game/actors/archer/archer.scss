@@ -1,0 +1,58 @@
+.actor.archer {
+  width: 76px;
+  height: 76px;
+
+  &--idle {
+    .actor__sprite {
+      background-image: url(/images/sprites/archer/archer--idle.png);
+
+      &.tile-0 {
+        width: 26px;
+        height: 39px;
+        background-position: -4px -4px;
+      }
+
+      &.tile-1 {
+        width: 25px;
+        height: 39px;
+        background-position: -38px -4px;
+      }
+
+      &.tile-2 {
+        width: 27px;
+        height: 39px;
+        background-position: -71px -4px;
+      }
+
+      &.tile-3 {
+        width: 26px;
+        height: 38px;
+        background-position: -106px -4px;
+      }
+
+      &.tile-4 {
+        width: 25px;
+        height: 38px;
+        background-position: -140px -4px;
+      }
+
+      &.tile-5 {
+        width: 25px;
+        height: 37px;
+        background-position: -173px -4px;
+      }
+
+      &.tile-6 {
+        width: 25px;
+        height: 38px;
+        background-position: -206px -4px;
+      }
+
+      &.tile-7 {
+        width: 25px;
+        height: 40px;
+        background-position: -239px -4px;
+      }
+    }
+  }
+}

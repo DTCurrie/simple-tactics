@@ -1,0 +1,40 @@
+$gridTileWidth: 76px;
+$gridTileHeight: 56px;
+$gridTileOpacity: 0.35;
+
+$gridTileActive: rgba(252, 239, 56, $gridTileOpacity);
+$gridTileDefault: rgba(255, 255, 255, $gridTileOpacity);
+$gridTileBlue: rgba(56, 180, 252, $gridTileOpacity);
+$gridTileRed: rgba(252, 56, 56, $gridTileOpacity);
+
+.grids {
+  left: 2px;
+  bottom: 24px;
+}
+
+.grid {
+  & &__tile {
+    width: $gridTileWidth;
+    height: $gridTileHeight;
+    border: none;
+    appearance: none;
+    background: $gridTileDefault;
+  }
+
+  &--blue &__tile {
+    background: $gridTileBlue;
+  }
+
+  &--red &__tile {
+    background: $gridTileRed;
+  }
+
+  & &__tile--active {
+    background: $gridTileActive;
+  }
+}
+
+:export {
+  gridTileWidth: $gridTileWidth;
+  gridTileHeight: $gridTileHeight;
+}

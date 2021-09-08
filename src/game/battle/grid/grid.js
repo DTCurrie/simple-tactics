@@ -1,6 +1,8 @@
 import { Entity } from "../../elements/entity";
 
-import { GridSpace, gridSpaceHeight, gridSpaceWidth } from "./grid-space";
+import { GridTile, gridTileHeight, gridTileWidth } from "./grid-tile";
+
+import "./grid.scss";
 
 export const Grid = (label, { classes = [], ...attributes }) => {
   const width = 5;
@@ -12,23 +14,22 @@ export const Grid = (label, { classes = [], ...attributes }) => {
   });
 
   const map = {};
-  const spaces = [];
 
   for (let x = 0; x < width; x++) {
-    map[x] = [];
     for (let y = 0; y < height; y++) {
-      const space = GridSpace({
+      const coordinates = `${x}-${y}`;
+      const tile = GridTile({
         parent: grid.entity,
-        label: `${label} Grid Space: Column ${x + 1} Row ${y + 1}`,
+        label: `${label} Grid  Tile: Column ${x + 1} Row ${y + 1}`,
+        coordinates,
       });
 
-      map[x][y] = space;
-      spaces.push(space);
-
-      space.stylize({
-        left: `${gridSpaceWidth * x + 4 * x}px`,
-        bottom: `${gridSpaceHeight * y + 4 * y}px`,
+      tile.stylize({
+        left: `${gridTileWidth * x + 4 * x}px`,
+        bottom: `${gridTileHeight * y + 4 * y}px`,
       });
+
+      map[coordinates] = tile;
     }
   }
 
@@ -37,6 +38,5 @@ export const Grid = (label, { classes = [], ...attributes }) => {
     width,
     height,
     map,
-    spaces,
   };
 };

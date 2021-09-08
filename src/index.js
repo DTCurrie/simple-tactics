@@ -1,3 +1,4 @@
-import { initializeGame } from "./game-state-machine";
+import { gameStateMachine } from "./game-state-machine";
+import { InitializeBattleState } from "./game/battle/states/initialize-battle-state";
 
-initializeGame();
+gameStateMachine.transition(InitializeBattleState());

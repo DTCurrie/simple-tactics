@@ -1,29 +1,34 @@
 import { Entity } from "../elements/entity";
 
-export const Actor = ({ label, sprite, owner, classes = [], ...options }) => {
+import "./actor.scss";
+
+export const actors = {};
+
+export const Actor = ({ label, owner, classes = [], ...options }) => {
   const actor = Entity({ ...options, classes: ["actor", ...classes] });
 
-  const { entity: labelEntity } = Entity({
+  const labelEntity = Entity({
     classes: ["actor__label"],
     parent: actor.entity,
-    innerHtml: label,
   });
 
-  const { entity: spriteEntity } = Entity({
-    tag: "img",
+  labelEntity.entity.innerHTML = label;
+
+  const spriteEntity = Entity({
+    tag: "div",
     classes: ["actor__sprite"],
-    title: label,
-    alt: label,
     parent: actor.entity,
-    src: sprite,
+    "aria-label": label,
   });
 
-  return {
+  const result = {
     ...actor,
     label,
-    sprite,
     owner,
     labelEntity,
     spriteEntity,
   };
+
+  actors[actor.id] = result;
+  return result;
 };

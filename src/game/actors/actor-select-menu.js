@@ -14,6 +14,8 @@ export const ActorSelectMenu = ({ actor, onMove }) => {
   });
 
   const moveItem = document.createElement("li");
+  moveItem.classList.add("menu__item", "actor__select-menu-item");
+
   const move = document.createElement("button");
   move.innerHTML = "Move";
 

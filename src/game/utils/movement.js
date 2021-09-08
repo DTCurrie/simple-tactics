@@ -16,7 +16,7 @@ export const simpleSearch = (from, range) =>
   parseInt(from.getAttribute("data-pathfinding-cost")) + 1 <= range;
 
 export const resetPathfinding = (grid) => {
-  grid.entity.querySelectorAll("grid__tile").forEach((tile) => {
+  grid.entity.querySelectorAll(".grid__tile").forEach((tile) => {
     tile.removeAttribute("data-pathfinding-previous");
     tile.setAttribute("data-pathfinding-cost", Number.MAX_SAFE_INTEGER);
   });

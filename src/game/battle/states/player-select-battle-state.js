@@ -8,7 +8,7 @@ export const PlayerSelectBattleState = ({ bg, grids, blueGrid, redGrid }) => {
   const select = (e) => {
     if (e.target.classList.contains("grid__tile")) {
       const coordinates = e.target.getAttribute("data-coordinates");
-      gameStateMachine.transition(
+      return gameStateMachine.transition(
         PlayerSelectionBattleState({
           bg,
           grids,
@@ -17,8 +17,24 @@ export const PlayerSelectBattleState = ({ bg, grids, blueGrid, redGrid }) => {
           coordinates,
         })
       );
+    }
 
-      return;
+    if (e.target.classList.contains("actor")) {
+      const actorId = e.target.getAttribute("data-entity");
+
+      const coordinates = blueGrid.entity
+        .querySelector(`[data-occupant="${actorId}"]`)
+        .getAttribute("data-coordinates");
+
+      return gameStateMachine.transition(
+        PlayerSelectionBattleState({
+          bg,
+          grids,
+          blueGrid,
+          redGrid,
+          coordinates,
+        })
+      );
     }
 
     if (e.target.parentNode.classList.contains("actor")) {
@@ -28,7 +44,7 @@ export const PlayerSelectBattleState = ({ bg, grids, blueGrid, redGrid }) => {
         .querySelector(`[data-occupant="${actorId}"]`)
         .getAttribute("data-coordinates");
 
-      gameStateMachine.transition(
+      return gameStateMachine.transition(
         PlayerSelectionBattleState({
           bg,
           grids,
